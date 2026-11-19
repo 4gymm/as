@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#10142b" />
+  <title>Academic Service — Your Academic Companion</title>
+  <meta name="description" content="Academic Service — pendampingan dan layanan kebutuhan akademik mahasiswa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --night: #10142b;
+      --night-2: #171d3b;
+      --panel: rgba(255,255,255,.065);
+      --line: rgba(220,224,255,.15);
+      --text: #f4f3ff;
+      --muted: #b8bdd8;
+      --moon: #e8e8ff;
+      --lilac: #b9a9f5;
+      --lilac-2: #9583df;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text); font-family: "DM Sans", sans-serif;
+      background:
+        radial-gradient(circle at 82% 8%, rgba(153,139,225,.19), transparent 24rem),
+        radial-gradient(circle at 8% 48%, rgba(79,104,174,.13), transparent 28rem),
+        linear-gradient(145deg, #0d1125 0%, #151a36 52%, #10142b 100%);
+      min-height: 100vh; overflow-x: hidden;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .35;
+      background-image: radial-gradient(1px 1px at 8% 17%, #fff 98%, transparent),
+        radial-gradient(1px 1px at 27% 72%, #fff 98%, transparent),
+        radial-gradient(1.5px 1.5px at 63% 24%, #fff 98%, transparent),
+        radial-gradient(1px 1px at 83% 61%, #fff 98%, transparent),
+        radial-gradient(1px 1px at 91% 13%, #fff 98%, transparent),
+        radial-gradient(1px 1px at 46% 43%, #fff 98%, transparent);
+      background-size: 360px 300px;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1100px, calc(100% - 44px)); margin: auto; position: relative; }
+    header { padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    nav { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:flex; align-items:center; gap:11px; font-weight:700; letter-spacing:.2px; }
+    .brand-mark { width:36px; height:36px; display:grid; place-items:center; border-radius:50%; color:#11152e; background:var(--moon); box-shadow:0 0 28px rgba(218,220,255,.28); font-size:20px; }
+    .brand span:last-child { font-size:16px; }
+    .nav-links { display:flex; align-items:center; gap:28px; color:var(--muted); font-size:13px; }
+    .nav-links a:hover { color:white; }
+    .nav-cta, .btn-primary {
+      background:var(--moon); color:#171a35; border:0; border-radius:999px; padding:12px 19px;
+      font:600 13px "DM Sans",sans-serif; display:inline-flex; align-items:center; justify-content:center;
+      transition:.2s ease; cursor:pointer;
+    }
+    .nav-cta:hover, .btn-primary:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(205,198,255,.18); }
+    .hero { display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:48px; padding:88px 0 82px; }
+    .eyebrow { color:var(--lilac); text-transform:uppercase; letter-spacing:2.4px; font-size:10px; font-weight:700; }
+    h1,h2,h3 { font-family:"Playfair Display",serif; font-weight:600; }
+    h1 { font-size:clamp(43px,6vw,70px); line-height:1.08; letter-spacing:-1.8px; margin:18px 0 20px; max-width:650px; }
+    h1 em { color:var(--lilac); font-style:normal; }
+    .hero-copy { color:var(--muted); font-size:15px; line-height:1.9; max-width:530px; margin:0 0 29px; }
+    .hero-actions { display:flex; gap:13px; flex-wrap:wrap; }
+    .btn-secondary { border:1px solid var(--line); color:var(--text); border-radius:999px; padding:12px 19px; font-size:13px; font-weight:600; }
+    .btn-secondary:hover { background:rgba(255,255,255,.07); }
+    .moon-scene { min-height:330px; display:grid; place-items:center; position:relative; }
+    .moon {
+      width:205px; height:205px; border-radius:50%; position:relative;
+      background:radial-gradient(circle at 34% 28%, #fff 0%, #e8e9ff 35%, #c8c9e8 68%, #9298c5 100%);
+      box-shadow:0 0 45px rgba(214,218,255,.28), 0 0 120px rgba(153,153,229,.18);
+    }
+    .moon::after { content:""; position:absolute; width:190px; height:190px; border-radius:50%; background:#171c39; left:57px; top:-21px; }
+    .orbit { position:absolute; width:320px; height:320px; border:1px solid rgba(221,224,255,.18); border-radius:50%; transform:rotate(-24deg); }
+    .orbit::after { content:"✦"; position:absolute; color:#d9d7ff; font-size:18px; top:42px; right:34px; }
+    .tiny-star { position:absolute; color:#e9e8ff; font-size:20px; }
+    .star-a { top:35px; left:38px; } .star-b { bottom:42px; right:24px; font-size:13px; }
+    .scene-caption { position:absolute; bottom:0; color:#aeb3d1; font-size:11px; letter-spacing:2px; text-transform:uppercase; }
+    .section { padding:72px 0; }
+    .section-head { text-align:center; max-width:620px; margin:0 auto 36px; }
+    .section-head h2 { font-size:clamp(30px,4vw,42px); margin:12px 0; }
+    .section-head p { color:var(--muted); font-size:14px; line-height:1.8; margin:0; }
+    .services { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .service-card { background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:25px; min-height:190px; transition:.2s ease; }
+    .service-card:hover { transform:translateY(-4px); border-color:rgba(201,193,255,.42); background:rgba(255,255,255,.09); }
+    .service-icon { width:39px; height:39px; border-radius:12px; display:grid; place-items:center; background:rgba(185,169,245,.14); color:#d7ceff; font-size:18px; margin-bottom:18px; }
+    .service-card h3 { font-size:20px; margin:0 0 9px; }
+    .service-card p { color:var(--muted); font-size:12px; line-height:1.8; margin:0; }
+    .process { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .step { border-top:1px solid var(--line); padding-top:19px; }
+    .step-no { color:var(--lilac); font-size:11px; letter-spacing:1.5px; font-weight:700; }
+    .step h3 { font-size:21px; margin:10px 0 7px; }
+    .step p { color:var(--muted); font-size:13px; line-height:1.8; margin:0; }
+    .contact-panel { background:linear-gradient(135deg,rgba(185,169,245,.14),rgba(255,255,255,.045)); border:1px solid var(--line); border-radius:24px; padding:38px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center; }
+    .contact-panel h2 { font-size:35px; line-height:1.15; margin:10px 0 13px; }
+    .contact-panel p { color:var(--muted); font-size:13px; line-height:1.8; }
+    form { display:grid; gap:12px; }
+    input, select, textarea { width:100%; padding:13px 14px; border-radius:11px; border:1px solid rgba(220,224,255,.2); background:rgba(9,13,31,.45); color:var(--text); font:13px "DM Sans",sans-serif; outline:none; }
+    input:focus,select:focus,textarea:focus { border-color:var(--lilac); }
+    select option { color:#171a35; }
+    textarea { min-height:88px; resize:vertical; }
+    form button { width:100%; }
+    footer { padding:26px 0 34px; border-top:1px solid rgba(255,255,255,.08); color:#9299bb; font-size:11px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    @media(max-width:760px) {
+      .wrap { width:min(100% - 34px, 560px); }
+      .nav-links { display:none; }
+      .hero { grid-template-columns:1fr; gap:18px; padding:66px 0 50px; }
+      .moon-scene { min-height:260px; }
+      .moon { width:155px; height:155px; }
+      .moon::after { width:145px; height:145px; left:43px; top:-16px; }
+      .orbit { width:250px; height:250px; }
+      .scene-caption { bottom:-3px; }
+      .section { padding:55px 0; }
+      .services { grid-template-columns:1fr 1fr; }
+      .service-card { padding:19px; min-height:185px; }
+      .process { grid-template-columns:1fr; gap:25px; }
+      .contact-panel { grid-template-columns:1fr; padding:25px; gap:15px; }
+    }
+    @media(max-width:430px) {
+      .services { grid-template-columns:1fr; }
+      .nav-cta { padding:10px 14px; font-size:12px; }
+      h1 { font-size:45px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#home"><span class="brand-mark">☾</span><span>Academic Service</span></a>
+        <div class="nav-links">
+          <a href="#services">Layanan</a><a href="#how">Cara kerja</a><a href="#contact">Kontak</a>
+        </div>
+        <a class="nav-cta" href="#contact">Mulai konsultasi ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow">Your academic companion</div>
+        <h1>Temani langkahmu,<br><em>raih tujuanmu.</em></h1>
+        <p class="hero-copy">Ruang bantuan akademik untuk menemani proses belajarmu. Mulai dari penulisan, presentasi, desain, hingga konsultasi teknis — semua dibicarakan dengan jelas dan terarah.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#contact">Konsultasi sekarang ↗</a>
+          <a class="btn-secondary" href="#services">Jelajahi layanan</a>
+        </div>
+      </div>
+      <div class="moon-scene" aria-label="Ilustrasi bulan dan bintang">
+        <span class="tiny-star star-a">✧</span><span class="tiny-star star-b">✦</span>
+        <div class="orbit"></div><div class="moon"></div>
+        <div class="scene-caption">A little help under the moonlight</div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What we can help with</div>
+          <h2>Temukan bantuan yang kamu butuhkan.</h2>
+          <p>Pilih layanan yang sesuai. Setiap kebutuhan akan dibahas terlebih dahulu agar ruang lingkup, waktu, dan biayanya jelas.</p>
+        </div>
+        <div class="services">
+          <article class="service-card"><div class="service-icon">✎</div><h3>Writing Support</h3><p>Pendampingan makalah, laporan, proposal, dan penyuntingan tulisan akademik.</p></article>
+          <article class="service-card"><div class="service-icon">▤</div><h3>Presentation</h3><p>Penyusunan dan desain slide presentasi yang rapi, menarik, dan mudah dipahami.</p></article>
+          <article class="service-card"><div class="service-icon">⌘</div><h3>Programming</h3><p>Konsultasi coding, debugging, serta pendampingan pengerjaan proyek pemrograman.</p></article>
+          <article class="service-card"><div class="service-icon">✧</div><h3>Creative Design</h3><p>Desain poster, infografis, diagram, dan kebutuhan visual untuk kegiatan akademik.</p></article>
+          <article class="service-card"><div class="service-icon">⌕</div><h3>Research Support</h3><p>Pendampingan pencarian referensi, pengolahan data, dan pemahaman metode penelitian.</p></article>
+          <article class="service-card"><div class="service-icon">☾</div><h3>Study Assistance</h3><p>Diskusi materi, penjelasan konsep, dan bimbingan memahami tugas perkuliahan.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Simple steps</div>
+          <h2>Mulai dengan tiga langkah.</h2>
+          <p>Proses yang sederhana, komunikasi yang terbuka, dan kesepakatan sebelum layanan dimulai.</p>
+        </div>
+        <div class="process">
+          <div class="step"><div class="step-no">01 / CERITAKAN</div><h3>Sampaikan kebutuhanmu</h3><p>Pilih jenis layanan dan jelaskan detail tugas, ketentuan, serta tenggat waktunya.</p></div>
+          <div class="step"><div class="step-no">02 / DISKUSIKAN</div><h3>Sepakati detailnya</h3><p>Kami diskusikan ruang lingkup, estimasi biaya, dan waktu pengerjaan melalui chat.</p></div>
+          <div class="step"><div class="step-no">03 / MULAI</div><h3>Lanjutkan proses</h3><p>Setelah semuanya disepakati, proses pendampingan atau layanan dapat dimulai.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="contact-panel">
+          <div>
+            <div class="eyebrow">Let's talk</div>
+            <h2>Ada tugas yang ingin kamu diskusikan?</h2>
+            <p>Isi ringkasan kebutuhanmu. Tombol di samping akan menyiapkan pesan WhatsApp agar kamu bisa melanjutkan konsultasi.</p>
+            <p><strong>Academic Service</strong><br>Small steps, brighter outcomes.</p>
+          </div>
+          <form id="orderForm">
+            <input id="name" type="text" placeholder="Nama kamu" required />
+            <select id="service" required>
+              <option value="" disabled selected>Pilih jenis layanan</option>
+              <option>Writing Support</option><option>Presentation</option><option>Programming</option>
+              <option>Creative Design</option><option>Research Support</option><option>Study Assistance</option>
+            </select>
+            <input id="topic" type="text" placeholder="Mata kuliah / topik" />
+            <textarea id="details" placeholder="Ceritakan kebutuhan dan deadline-mu..." required></textarea>
+            <button class="btn-primary" type="submit">Kirim melalui WhatsApp ↗</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Academic Service. All rights reserved.</span>
+      <span>Made with care, under the moonlight ☾</span>
+    </div>
+  </footer>
+  <script>
+    // GANTI nomor berikut dengan nomor WhatsApp bisnis kamu (format internasional tanpa + atau spasi).
+    const WHATSAPP_NUMBER = "6281234567890";
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("orderForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const service = document.getElementById("service").value;
+      const topic = document.getElementById("topic").value.trim() || "-";
+      const details = document.getElementById("details").value.trim();
+      const message = `Halo Academic Service! Saya ingin konsultasi.%0A%0ANama: ${encodeURIComponent(name)}%0ALayanan: ${encodeURIComponent(service)}%0ATopik: ${encodeURIComponent(topic)}%0ADetail: ${encodeURIComponent(details)}`;
+      window.open(`https://wa.me/089697952405?text=${message}`, "_blank", "noopener");
+    });
+  </script>
+</body>
+</html>
